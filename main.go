@@ -62,46 +62,15 @@ func main() {
 		defer resp.Body.Close()
 
 	}
-	//if err != nil {
-	//	fmt.Println("err:", err)
-	//	return
-	//}
-	//for index, item := range content {
-	//	fmt.Println(index)
-	//	fmt.Println(item)
-	//}
-	//fmt.Println("content:", content)
 }
 
 func readTxt2(r io.Reader) []string {
 	scanner := bufio.NewScanner(r)
 	var payloads []string
 	for scanner.Scan() {
-		//fmt.Println(scanner.Text())
 		payloads = append(payloads, scanner.Text())
 	}
-	//for index, item := range payloads {
-	//	fmt.Println(index)
-	//	fmt.Println(item)
-	//}
 	return payloads
-}
-
-func readTxt(r io.Reader) ([]string, error) {
-	reader := bufio.NewReader(r)
-	l := make([]string, 0, 64)
-	for {
-		line, _, err := reader.ReadLine()
-		if err != nil {
-			if err == io.EOF {
-				break
-			} else {
-				return nil, err
-			}
-		}
-		l = append(l, strings.Trim(string(line), " "))
-	}
-	return l, nil
 }
 
 func findMustCompile(targetString []byte) [][][]byte {
