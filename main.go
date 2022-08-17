@@ -11,12 +11,6 @@ import (
 	"strings"
 )
 
-func main2() {
-	decode := base64.StdEncoding.EncodeToString([]byte("123"))
-
-	fmt.Println(decode)
-}
-
 func main() {
 	url := "http://192.168.1.7/image_gallery.php"
 	response, err := http.Get(url)
