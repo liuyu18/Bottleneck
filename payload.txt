@@ -1,6 +1,1 @@
-../../../../../../../../etc/passwd
-../../../../../../../etc/passwd
-../../../../../../etc/passwd
-../../../../../etc/passwd
-../../../../etc/passwd
-../../../etc/passwd
+../image_gallery_load.php
