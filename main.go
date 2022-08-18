@@ -18,6 +18,8 @@ var payloadTxt = pflag.StringP("payloadTxt", "p", "payload.txt", "Input payload 
 func main() {
 	pflag.Parse()
 	url := "http://" + *ipAddr + "/image_gallery.php"
+	fmt.Println(url)
+	fmt.Println(*payloadTxt)
 	response, err := http.Get(url)
 	if err != nil {
 		fmt.Println(err)
